@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trendi Loots | Cloud Automation Dashboard</title>
+  <link rel="icon" href="https://fav.farm/🚀" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.03); }
+    }
+    .pulse-badge {
+      animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-gradient-to-r from-rose-900/60 via-purple-900/60 to-slate-900 border-b border-rose-500/20 py-2 px-4 text-center text-xs">
+    <span class="text-rose-300 font-semibold">⚡ Cloud Autonomous Engine:</span> 
+    <span class="text-slate-300">Runs every morning at 04:00 UTC (09:30 AM IST) on GitHub Actions Cloud Runners</span>
+    <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="ml-2 font-bold underline text-white hover:text-rose-300">View Live Actions &rarr;</a>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-600 via-pink-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-500/20">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-black tracking-tight text-white flex items-center gap-2">
+            Trendi Loots
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live Hub
+            </span>
+          </h1>
+          <p class="text-xs text-slate-400">Autonomous Video & Shorts Pipeline Monitor</p>
+        </div>
+      </div>
+
+      <!-- Quick Platform Links -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://www.youtube.com/@trendiloot" target="_blank" class="text-xs px-3 py-1.5 rounded-xl bg-red-600/10 text-red-400 border border-red-500/20 hover:bg-red-600/20 transition flex items-center gap-1.5 font-medium">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <span class="hidden sm:inline">YouTube</span>
+        </a>
+        <a href="https://t.me/trendiloots" target="_blank" class="text-xs px-3 py-1.5 rounded-xl bg-sky-600/10 text-sky-400 border border-sky-500/20 hover:bg-sky-600/20 transition flex items-center gap-1.5 font-medium">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.87 4.326-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.535-.194 1.006.128.832.941z"/></svg>
+          <span class="hidden sm:inline">Telegram</span>
+        </a>
+        <button onclick="fetchLiveStatus()" class="p-2 rounded-xl bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="Refresh Live Data">
+          <svg id="refresh-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+    <!-- KPI Metric Cards -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-sm relative overflow-hidden group">
+        <div class="text-xs font-medium text-slate-400">Total Video Queue</div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="stat-total" class="text-3xl font-black text-white tracking-tight">8</span>
+          <span class="text-xs text-slate-500">Days Configured</span>
+        </div>
+        <div class="mt-2 text-xs text-indigo-400 flex items-center gap-1 font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-indigo-400"></span>
+          Auto-extending queue
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-emerald-500/20 shadow-sm relative overflow-hidden group">
+        <div class="text-xs font-medium text-slate-400">Live on YouTube</div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="stat-completed" class="text-3xl font-black text-emerald-400 tracking-tight">3</span>
+          <span class="text-xs text-slate-500">Drops Completed</span>
+        </div>
+        <div class="mt-2 text-xs text-emerald-400/80 font-medium">
+          Munch &bull; KitKat &bull; Maggi
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-amber-500/20 shadow-sm relative overflow-hidden group">
+        <div class="text-xs font-medium text-slate-400">Currently in Pipeline</div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="stat-current-day" class="text-3xl font-black text-amber-400 tracking-tight">Day 4</span>
+        </div>
+        <div class="mt-2 text-xs text-amber-300 font-medium truncate" id="stat-current-brand">
+          Lay's: Free Foreign Trip & Cash
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900 border border-sky-500/20 shadow-sm relative overflow-hidden group">
+        <div class="text-xs font-medium text-slate-400">Scheduled Backlog</div>
+        <div class="mt-2 flex items-baseline gap-2">
+          <span id="stat-pending" class="text-3xl font-black text-sky-400 tracking-tight">4</span>
+          <span class="text-xs text-slate-500">Pending Execution</span>
+        </div>
+        <div class="mt-2 text-xs text-sky-300 font-medium">
+          Days 5 to 8 Pre-Rendered
+        </div>
+      </div>
+    </section>
+
+    <!-- ⚡ SPOTLIGHT: CURRENTLY IN PIPELINE -->
+    <section class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border border-amber-500/30 shadow-2xl relative overflow-hidden">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div class="space-y-3 max-w-2xl">
+          <div class="flex items-center gap-2">
+            <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-badge flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              CURRENTLY IN PIPELINE &bull; NEXT DROP
+            </span>
+            <span class="text-xs text-slate-400">Target Time: Daily 09:30 AM IST</span>
+          </div>
+          
+          <h2 id="pipeline-title" class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Day 4: Lay's & Kurkure: International Trip & ₹10,000 Cash
+          </h2>
+
+          <p id="pipeline-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            PepsiCo Smile and Win contest code hunt inside ₹20 & ₹50 packs. Features automated SMS registration to 9902391200, high-paced conversational Hindi voiceover, and kinetic prize graphics.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <div class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
+              <span class="text-slate-400">SMS Gateway:</span>
+              <span id="pipeline-sms" class="font-mono text-emerald-400 font-bold">9902391200 (LAYS [CODE])</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
+              <span class="text-slate-400">Assets Status:</span>
+              <span class="font-bold text-amber-400">Voice, Scenes & Thumbnails Ready</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[220px]">
+          <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="py-3 px-5 rounded-2xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/30 transition">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Trigger / Monitor in GitHub Actions ↗
+          </a>
+          <a href="https://www.youtube.com/@trendiloot" target="_blank" class="py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+            View Live Channel ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Queue Filter & Controls -->
+    <section class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold tracking-tight text-white">Full Automation Schedule & Releases</h2>
+          <p class="text-xs text-slate-400">Complete multi-format videos, Shorts, scripts, and promotional codes</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 bg-slate-900 p-1 rounded-xl border border-slate-800 self-start sm:self-auto">
+          <button onclick="filterQueue('all')" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-white" data-filter="all">All Days (8)</button>
+          <button onclick="filterQueue('COMPLETED')" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white" data-filter="COMPLETED">Completed (3)</button>
+          <button onclick="filterQueue('PENDING')" class="tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-white" data-filter="PENDING">Pending (5)</button>
+        </div>
+      </div>
+
+      <!-- Queue Cards Container -->
+      <div id="queue-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injected via JavaScript -->
+      </div>
+    </section>
+
+    <!-- GitHub Actions Live Health Tracker Section -->
+    <section class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <h3 class="text-sm font-bold text-white">Live GitHub Actions Workflow Engine</h3>
+        </div>
+        <span id="last-sync-time" class="text-xs text-slate-500">Syncing...</span>
+      </div>
+
+      <div id="runs-container" class="space-y-2">
+        <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-400 text-center">
+          Loading latest GitHub Actions runs...
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-500 space-y-1">
+    <p>Trendi Loots Autonomous Creator Hub &bull; Powered by GitHub Actions, Edge-TTS & YouTube Data API</p>
+    <p>Channel ID: <span class="font-mono text-slate-400">UCPho0I3hFSKO9ND9UgN0YZA</span> &bull; Telegram: <a href="https://t.me/trendiloots" class="text-sky-400 underline">@trendiloots</a></p>
+  </footer>
+
+  <script>
+    const REPO = "VanshRupeja/youtube-automation-tool";
+    const RAW_QUEUE_URL = `https://raw.githubusercontent.com/${REPO}/main/queue.json`;
+    let queueData = [
+      {
+        "day": 1,
+        "status": "COMPLETED",
+        "brand": "Nestle Munch",
+        "contest_name": "Munch Max Free iPhone 16 Contest",
+        "long_title": "Nestle Munch Max Se Free iPhone 16 Kaise Jeetein? Wrapper Secret SMS Code Trick & Proof!",
+        "youtube_id": "SWzz-Mpw0nE",
+        "youtube_url": "https://www.youtube.com/watch?v=SWzz-Mpw0nE",
+        "short1_youtube_id": "Frb9LGwG9As",
+        "short1_youtube_url": "https://www.youtube.com/watch?v=Frb9LGwG9As",
+        "short2_youtube_id": "b7Mr0UieX_Y",
+        "short2_youtube_url": "https://www.youtube.com/watch?v=b7Mr0UieX_Y",
+        "thumbnail_path": "assets/thumbnails/day1_thumbnail.jpg",
+        "sms_number": "6262642222",
+        "sms_format": "MUNCH [10-DIGIT CODE]"
+      },
+      {
+        "day": 2,
+        "status": "COMPLETED",
+        "brand": "Nestle KitKat",
+        "contest_name": "Break Se Bano Star - Win Sony PS5 & Gaming Laptops",
+        "long_title": "KitKat Se Free Sony PS5 & Gaming Laptop Kaise Jeetein? Pack SMS Code Trick 2026",
+        "youtube_id": "cyU0_pC4Loc",
+        "youtube_url": "https://www.youtube.com/watch?v=cyU0_pC4Loc",
+        "short1_youtube_id": "RytkpN6fEVQ",
+        "short1_youtube_url": "https://www.youtube.com/watch?v=RytkpN6fEVQ",
+        "short2_youtube_id": "21ICqhFTvos",
+        "short2_youtube_url": "https://www.youtube.com/watch?v=21ICqhFTvos",
+        "thumbnail_path": "assets/thumbnails/day2_thumbnail.jpg",
+        "sms_number": "6262642222",
+        "sms_format": "KITKAT [LOT CODE]"
+      },
+      {
+        "day": 3,
+        "status": "COMPLETED",
+        "brand": "Nestle Maggi",
+        "contest_name": "Maggi Khushiyon Ka Gold Bowl Contest 2026",
+        "long_title": "Maggi Khaao Aur 24K Pure Gold Bowl Jeeto! Pack Secret Code SMS Trick & Winner Proof 2026",
+        "youtube_id": "wn5x8jJ5NUk",
+        "youtube_url": "https://www.youtube.com/watch?v=wn5x8jJ5NUk",
+        "short1_youtube_id": "A8tFyI_uG7Q",
+        "short1_youtube_url": "https://www.youtube.com/watch?v=A8tFyI_uG7Q",
+        "short2_youtube_id": "arwBdwHdHuQ",
+        "short2_youtube_url": "https://www.youtube.com/watch?v=arwBdwHdHuQ",
+        "thumbnail_path": "assets/thumbnails/day3_thumbnail.jpg",
+        "sms_number": "6262642222",
+        "sms_format": "MAGGI [LOT CODE]"
+      },
+      {
+        "day": 4,
+        "status": "PENDING",
+        "brand": "Lays & Kurkure",
+        "contest_name": "Smile & Win International Trip & Free Cash Daily",
+        "long_title": "Lays Se Free International Trip & ₹10,000 Cash Daily Kaise Jeetein? Code Redeem Guide 2026",
+        "thumbnail_path": "assets/thumbnails/day4_thumbnail.jpg",
+        "sms_number": "9902391200",
+        "sms_format": "LAYS [10-DIGIT CODE]"
+      },
+      {
+        "day": 5,
+        "status": "PENDING",
+        "brand": "Britannia Good Day",
+        "contest_name": "Har Ghante Khushiyan - Win ₹5,000 Hourly Cash",
+        "long_title": "Britannia Good Day Se Har Ghante ₹5,000 Cash Kaise Jeetein? Wrapper Lot Code Trick",
+        "thumbnail_path": "assets/thumbnails/day5_thumbnail.jpg",
+        "sms_number": "8722487224",
+        "sms_format": "GOODDAY [LOT CODE]"
+      },
+      {
+        "day": 6,
+        "status": "PENDING",
+        "brand": "Cadbury Oreo",
+        "contest_name": "Play & Win Apple iPad Daily Contest",
+        "long_title": "Oreo Se Free Apple iPad Kaise Jeetein? Secret 10-Digit Code SMS Gateway Trick!",
+        "thumbnail_path": "assets/thumbnails/day6_thumbnail.jpg",
+        "sms_number": "9902391200",
+        "sms_format": "OREO [10-DIGIT CODE]"
+      },
+      {
+        "day": 7,
+        "status": "PENDING",
+        "brand": "Coca-Cola Thums Up",
+        "contest_name": "Toofani Bumper Offer - Yamaha R15 Sports Bike",
+        "long_title": "Coca-Cola Thums Up Se Free Yamaha R15 Sports Bike Kaise Jeetein? Crown Cap Code 2026",
+        "thumbnail_path": "assets/thumbnails/day7_thumbnail.jpg",
+        "sms_number": "7878787878",
+        "sms_format": "THUMSUP [CAP CODE]"
+      },
+      {
+        "day": 8,
+        "status": "PENDING",
+        "brand": "ITC Bingo Tedhe Medhe",
+        "contest_name": "Tedhe Medhe Gaming Mania - Sony PS5 Daily",
+        "long_title": "ITC Bingo Tedhe Medhe Se Free Sony PlayStation 5 Kaise Jeetein? Wrapper Code 2026",
+        "thumbnail_path": "assets/thumbnails/day8_thumbnail.jpg",
+        "sms_number": "6262642222",
+        "sms_format": "BINGO [10-DIGIT CODE]"
+      }
+    ];
+
+    let currentFilter = 'all';
+
+    async function fetchLiveStatus() {
+      const icon = document.getElementById('refresh-icon');
+      if (icon) icon.classList.add('animate-spin');
+      
+      try {
+        // 1. Fetch raw queue from GitHub with cache-busting
+        const queueRes = await fetch(`${RAW_QUEUE_URL}?_=${Date.now()}`);
+        if (queueRes.ok) {
+          const freshData = await queueRes.json();
+          if (Array.isArray(freshData) && freshData.length > 0) {
+            queueData = freshData;
+          }
+        }
+      } catch (e) {
+        console.warn('Using built-in queue fallback data:', e);
+      }
+
+      // Update UI metrics
+      updateMetrics();
+      renderQueue();
+
+      // 2. Fetch live GitHub Actions runs
+      try {
+        const runRes = await fetch(`https://api.github.com/repos/${REPO}/actions/runs?per_page=5`);
+        if (runRes.ok) {
+          const runData = await runRes.json();
+          renderWorkflowRuns(runData.workflow_runs || []);
+        }
+      } catch (e) {
+        console.warn('Failed to fetch actions runs:', e);
+      }
+
+      document.getElementById('last-sync-time').innerText = `Synced: ${new Date().toLocaleTimeString()}`;
+      if (icon) setTimeout(() => icon.classList.remove('animate-spin'), 600);
+    }
+
+    function updateMetrics() {
+      const completed = queueData.filter(i => i.status === 'COMPLETED');
+      const pending = queueData.filter(i => i.status !== 'COMPLETED');
+
+      document.getElementById('stat-total').innerText = queueData.length;
+      document.getElementById('stat-completed').innerText = completed.length;
+      document.getElementById('stat-pending').innerText = pending.length;
+
+      if (pending.length > 0) {
+        const current = pending[0];
+        document.getElementById('stat-current-day').innerText = `Day ${current.day}`;
+        document.getElementById('stat-current-brand').innerText = current.brand || current.contest_name || 'Next FMCG Deal';
+        
+        document.getElementById('pipeline-title').innerText = `Day ${current.day}: ${current.contest_name || current.long_title}`;
+        document.getElementById('pipeline-desc').innerText = current.long_title;
+        if (current.sms_number) {
+          document.getElementById('pipeline-sms').innerText = `${current.sms_number} (${current.sms_format || 'FORMAT'})`;
+        }
+      } else {
+        document.getElementById('stat-current-day').innerText = `All Done`;
+        document.getElementById('stat-current-brand').innerText = 'Queue empty - extender active';
+      }
+    }
+
+    function filterQueue(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === filter) {
+          btn.classList.add('bg-slate-800', 'text-white');
+          btn.classList.remove('text-slate-400');
+        } else {
+          btn.classList.remove('bg-slate-800', 'text-white');
+          btn.classList.add('text-slate-400');
+        }
+      });
+      renderQueue();
+    }
+
+    function renderQueue() {
+      const container = document.getElementById('queue-container');
+      if (!container) return;
+
+      const items = queueData.filter(i => {
+        if (currentFilter === 'all') return true;
+        if (currentFilter === 'COMPLETED') return i.status === 'COMPLETED';
+        return i.status !== 'COMPLETED';
+      });
+
+      if (items.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-sm">No items found for this filter.</div>`;
+        return;
+      }
+
+      container.innerHTML = items.map(item => {
+        const isCompleted = item.status === 'COMPLETED';
+        const isCurrentInPipeline = !isCompleted && item.day === 4;
+
+        const statusBadge = isCompleted 
+          ? `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>COMPLETED</span>`
+          : isCurrentInPipeline
+            ? `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>IN PIPELINE</span>`
+            : `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-800 text-slate-400 border border-slate-700 flex items-center gap-1.5">QUEUED</span>`;
+
+        const thumbSrc = item.thumbnail_path || `assets/thumbnails/day${item.day}_thumbnail.jpg`;
+        const ytLongUrl = item.youtube_url || (item.youtube_id ? `https://www.youtube.com/watch?v=${item.youtube_id}` : null);
+        const ytShort1 = item.short1_youtube_url || (item.short1_youtube_id ? `https://www.youtube.com/watch?v=${item.short1_youtube_id}` : null);
+        const ytShort2 = item.short2_youtube_url || (item.short2_youtube_id ? `https://www.youtube.com/watch?v=${item.short2_youtube_id}` : null);
+
+        return `
+          <div class="rounded-2xl bg-slate-900 border ${isCompleted ? 'border-slate-800' : isCurrentInPipeline ? 'border-amber-500/40 ring-1 ring-amber-500/20' : 'border-slate-800/60'} overflow-hidden flex flex-col shadow-lg transition hover:border-slate-700">
+            <!-- Thumbnail / Header Banner -->
+            <div class="relative aspect-video bg-slate-950 overflow-hidden group">
+              <img src="${thumbSrc}" alt="Day ${item.day} thumbnail" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/600x338/0f172a/94a3b8?text=Day+${item.day}+Thumbnail'" />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="px-2.5 py-1 rounded-md text-xs font-black bg-black/70 backdrop-blur text-white border border-white/10">
+                  DAY ${item.day}
+                </span>
+                ${statusBadge}
+              </div>
+
+              ${item.brand ? `
+                <div class="absolute bottom-3 left-3 right-3">
+                  <span class="text-xs font-semibold uppercase tracking-wider text-rose-400">${item.brand}</span>
+                  <h3 class="text-sm font-bold text-white line-clamp-1">${item.contest_name || item.long_title}</h3>
+                </div>
+              ` : ''}
+            </div>
+
+            <!-- Content Details -->
+            <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div>
+                <p class="text-xs text-slate-300 font-medium line-clamp-2 leading-relaxed">
+                  ${item.long_title || 'Autonomous Video Asset Generation'}
+                </p>
+                
+                ${item.sms_number ? `
+                  <div class="mt-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between text-xs">
+                    <span class="text-slate-400">SMS Gateway:</span>
+                    <button onclick="copyToClipboard('${item.sms_format ? item.sms_format.replace('[10-DIGIT CODE]', 'MG84K921Q') : item.sms_number}')" class="font-mono text-emerald-400 font-bold hover:underline" title="Click to copy">
+                      ${item.sms_number} (${item.sms_format || 'FORMAT'}) 📋
+                    </button>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Links & Actions -->
+              <div class="space-y-2 pt-2 border-t border-slate-800/80">
+                ${ytLongUrl ? `
+                  <a href="${ytLongUrl}" target="_blank" class="w-full py-2 px-3 rounded-xl bg-rose-600/10 hover:bg-rose-600/20 text-rose-400 border border-rose-500/20 font-semibold text-xs flex items-center justify-between transition">
+                    <span class="flex items-center gap-1.5">
+                      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                      Watch 16:9 Master Video
+                    </span>
+                    <span>↗</span>
+                  </a>
+                ` : `
+                  <div class="w-full py-2 px-3 rounded-xl bg-slate-950 text-slate-500 text-xs flex items-center justify-between border border-slate-800/50">
+                    <span>16:9 Master Video</span>
+                    <span class="font-medium ${isCurrentInPipeline ? 'text-amber-400 font-semibold' : 'text-slate-500'}">
+                      ${isCurrentInPipeline ? 'Rendering in pipeline...' : 'Scheduled next'}
+                    </span>
+                  </div>
+                `}
+
+                ${(ytShort1 || ytShort2) ? `
+                  <div class="grid grid-cols-2 gap-2 text-xs">
+                    ${ytShort1 ? `
+                      <a href="${ytShort1}" target="_blank" class="py-1.5 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center font-medium truncate transition">
+                        Short #1 ↗
+                      </a>
+                    ` : ''}
+                    ${ytShort2 ? `
+                      <a href="${ytShort2}" target="_blank" class="py-1.5 px-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-center font-medium truncate transition">
+                        Short #2 ↗
+                      </a>
+                    ` : ''}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderWorkflowRuns(runs) {
+      const container = document.getElementById('runs-container');
+      if (!container) return;
+
+      if (runs.length === 0) {
+        container.innerHTML = `<div class="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-400 text-center">No runs reported yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = runs.map(run => {
+        const isSuccess = run.conclusion === 'success';
+        const isInProgress = run.status === 'in_progress';
+        const isQueued = run.status === 'queued';
+        
+        const badgeColor = isSuccess ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+          : isInProgress ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 animate-pulse'
+          : isQueued ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30'
+          : 'bg-rose-500/10 text-rose-400 border-rose-500/30';
+
+        const label = isInProgress ? 'RUNNING NOW' : (run.conclusion || run.status).toUpperCase();
+
+        return `
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-between text-xs gap-4 hover:border-slate-700 transition">
+            <div class="flex items-center gap-3 min-w-0">
+              <span class="px-2 py-0.5 rounded-full font-bold text-[10px] border ${badgeColor}">
+                ${label}
+              </span>
+              <span class="font-semibold text-white truncate">${run.name} #${run.run_number}</span>
+              <span class="text-slate-500 hidden sm:inline font-mono">(${run.head_commit ? run.head_commit.message.substring(0, 35) : 'Commit'})</span>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+              <span class="text-slate-500">${new Date(run.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+              <a href="${run.html_url}" target="_blank" class="text-slate-400 hover:text-white underline">
+                View Logs ↗
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text);
+      alert('Copied to clipboard: ' + text);
+    }
+
+    // Auto load
+    fetchLiveStatus();
+    // Auto sync every 30 seconds
+    setInterval(fetchLiveStatus, 30000);
+  </script>
+</body>
+</html>
