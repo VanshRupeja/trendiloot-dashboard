@@ -183,7 +183,9 @@
     "short1_youtube_id": "Frb9LGwG9As",
     "short1_youtube_url": "https://www.youtube.com/watch?v=Frb9LGwG9As",
     "short2_youtube_id": "b7Mr0UieX_Y",
-    "short2_youtube_url": "https://www.youtube.com/watch?v=b7Mr0UieX_Y"
+    "short2_youtube_url": "https://www.youtube.com/watch?v=b7Mr0UieX_Y",
+    "completed_date": "2026-11-04",
+    "scheduled_date": "2026-11-04"
   },
   {
     "day": 2,
@@ -381,7 +383,9 @@
     "short1_youtube_id": "RytkpN6fEVQ",
     "short1_youtube_url": "https://www.youtube.com/watch?v=RytkpN6fEVQ",
     "short2_youtube_id": "21ICqhFTvos",
-    "short2_youtube_url": "https://www.youtube.com/watch?v=21ICqhFTvos"
+    "short2_youtube_url": "https://www.youtube.com/watch?v=21ICqhFTvos",
+    "completed_date": "2026-11-05",
+    "scheduled_date": "2026-11-05"
   },
   {
     "day": 3,
@@ -404,7 +408,9 @@
     "short1_youtube_id": "A8tFyI_uG7Q",
     "short1_youtube_url": "https://www.youtube.com/watch?v=A8tFyI_uG7Q",
     "short2_youtube_id": "arwBdwHdHuQ",
-    "short2_youtube_url": "https://www.youtube.com/watch?v=arwBdwHdHuQ"
+    "short2_youtube_url": "https://www.youtube.com/watch?v=arwBdwHdHuQ",
+    "completed_date": "2026-11-06",
+    "scheduled_date": "2026-11-06"
   },
   {
     "day": 4,
@@ -421,7 +427,131 @@
     "short2_title": "Lays Smile & Win Cash Flash Alert! \u26a1 Daily \u20b910,000 Winner #shorts",
     "long_script": "\u20b920 ka Lays ka packet khareed kar kya aap Singapore ya Dubai ghoomne ja sakte hain? Ji haan, bilkul sach! PepsiCo India ne apna grand Smile and Win promotional contest live kar diya hai! Jahan har din lucky winners ko free international flight tickets aur daily \u20b910,000 ka cash prize mil raha hai! \n\nAage badhne se pehle doston, turant hamare official Telegram channel TrendiLoots ko join kar lo jahan daily active unused promo codes sabse pehle drop hote hain! Sath hi hamare YouTube channel Trendi Loots ko abhi subscribe karke Bell icon zaroor press kar lo!\n\nAur sabse badi baat... 90 percent log chips khaa kar packet phenk dete hain bina andar chhupa secret 10-digit code check kiye! Is video mein hum seekhenge ki kaun sa pack lena hai, SMS kaise bhejna hai aur jeetne ki secret trick kya hai!\n\nStep One: Promo Pack Check! Dukaan par Lays ka wahi pack lijiye jisme upar Smile and Win ka red ribbon banner ho. Puraane stock par code nahi hota.\n\nStep Two: Inner Foil Code Hunt! Packet ko center seam se kholiye. Silver foil par printed 10-digit alphanumeric code ko note karein.\n\nStep Three: SMS Gateway! Recipient number 99 02 39 12 00 par SMS karein: LAYS space apna 10-digit code. Turant automated confirmation reply praapt karein.\n\nStep Four: Morning Timing Trick! Subah theek 9:15 AM se 9:35 AM ke low-traffic slot mein SMS bhejne par system aapki entry priority par pick karta hai!\n\nDaily free promo codes aur glitch loot deals ke liye Telegram channel TrendiLoots abhi join karein, aur YouTube channel Trendi Loots ko subscribe karke Bell icon zaroor press karein!",
     "short1_script": "\u20b920 ka Lays khaa kar wrapper mat phenko! Iske andar chhupa hai secret code jisse aap jeet sakte ho Free International Trip aur \u20b910,000 cash! Niche Related Video par tap karo aur Telegram TrendiLoots join karo!",
-    "short2_script": "Lays Smile and Win contest live ho chuka hai! Daily \u20b910,000 cash aur foreign trip jeetne ka mauka. SMS number 9902391200 par LAYS space code bhejo. Fresh codes ke liye Telegram TrendiLoots join karo aur channel subscribe karo!"
+    "short2_script": "Lays Smile and Win contest live ho chuka hai! Daily \u20b910,000 cash aur foreign trip jeetne ka mauka. SMS number 9902391200 par LAYS space code bhejo. Fresh codes ke liye Telegram TrendiLoots join karo aur channel subscribe karo!",
+    "completed_date": null,
+    "scheduled_date": "2026-11-20",
+    "scenes": [
+      {
+        "scene_num": 1,
+        "badge": "FREE INTERNATIONAL TRIP & CASH",
+        "title": "The \u20b920 Lay's Flight Ticket Mystery",
+        "subtitle": "Why Millions Throw Away Winning Chip Wrappers",
+        "theme_color": "#EF4444",
+        "price_original": "\u20b91,50,000 (Trip & Cash)",
+        "price_discounted": "\u20b920 (Lay's Pack)",
+        "bullets": [
+          [
+            "Official PepsiCo India Contest",
+            "Daily free international flights & \u20b910,000 cash"
+          ],
+          [
+            "90% People Throw Wrapper",
+            "Secret 10-digit lot code hidden inside foil"
+          ],
+          [
+            "Zero Hidden Fees",
+            "Direct flight tickets & bank transfer for cash"
+          ]
+        ],
+        "broll_keywords": "chips packet flight ticket foreign travel airport cash"
+      },
+      {
+        "scene_num": 2,
+        "badge": "STEP 1: PACK VERIFICATION",
+        "title": "Spot the Genuine Promo Pack",
+        "subtitle": "Avoid Buying Old Stock from General Stores",
+        "theme_color": "#F59E0B",
+        "price_original": null,
+        "price_discounted": "\u20b920 & \u20b950 Packs",
+        "bullets": [
+          [
+            "Look for Red Smile Ribbon",
+            "Must say 'Smile & Win Trip & Cash Daily'"
+          ],
+          [
+            "Valid on \u20b920 & \u20b950 Packs",
+            "Standard plain packs do NOT have contest codes"
+          ],
+          [
+            "2026 Fresh Batch Only",
+            "Check manufacturing date on back seal"
+          ]
+        ],
+        "broll_keywords": "supermarket snacks potato chips retail rack shopping"
+      },
+      {
+        "scene_num": 3,
+        "badge": "STEP 2: INNER FOIL CODE HUNT",
+        "title": "Locate the 10-Digit Code",
+        "subtitle": "Carefully Peel Open the Back Seam",
+        "theme_color": "#10B981",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Do Not Tear Packet In Half",
+            "Gently open center back seam with both hands"
+          ],
+          [
+            "Silver Inner Foil Layer",
+            "Code printed with laser ink inside bag"
+          ],
+          [
+            "Take Photo with Phone",
+            "Verify all 10 characters before sending SMS"
+          ]
+        ],
+        "broll_keywords": "hands opening chips wrapper silver foil close up"
+      },
+      {
+        "scene_num": 4,
+        "badge": "STEP 3: SMS GATEWAY",
+        "title": "Official SMS Gateway Syntax",
+        "subtitle": "Send to 9902391200 in Correct Format",
+        "theme_color": "#3B82F6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Official Recipient Number",
+            "Send SMS to 9902391200 (PepsiCo Server)"
+          ],
+          [
+            "Exact SMS Syntax",
+            "Type: LAYS <10-Digit Unique Code> in CAPITALS"
+          ],
+          [
+            "Instant Confirmation",
+            "Server returns automated confirmation in 30s"
+          ]
+        ],
+        "broll_keywords": "smartphone sms app typing sending message"
+      },
+      {
+        "scene_num": 5,
+        "badge": "STEP 4: WINNING TIMING TRICK",
+        "title": "Server Timing Algorithm Loophole",
+        "subtitle": "Double Your Winning Odds in Low-Traffic Windows",
+        "theme_color": "#8B5CF6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Morning 9:15 AM Slot",
+            "Low server entry volume ensures faster processing"
+          ],
+          [
+            "Avoid Peak Afternoon Traffic",
+            "Midday competition is 15x higher"
+          ],
+          [
+            "Join @TrendiLoots on Telegram",
+            "Daily free codes & winner notifications live"
+          ]
+        ],
+        "broll_keywords": "clock alarm morning time winning certificate"
+      }
+    ]
   },
   {
     "day": 5,
@@ -438,7 +568,131 @@
     "short2_title": "Britannia Hourly Cash Loot Alert! \u26a1 Har Ghante Naya Winner #shorts",
     "long_script": "Har ek ghante mein \u20b95,000 jeetna chahte hain? Britannia Good Day ne shuru kar diya hai apna mega Smile More contest! Jahan har ghante ek naya lucky winner chuna ja raha hai! \n\nAage badhne se pehle doston, hamare official Telegram channel TrendiLoots ko abhi join kar lo jahan hourly fresh codes drop hote hain! Sath hi Trendi Loots YouTube channel ko subscribe karke Bell icon zaroor press kar lo!\n\nHar pack ke andar ek unique 8-digit code hota hai jisse aapka \u20b910 ya \u20b920 ka biscuit direct bank cash prize mein badal sakta hai! Is video mein poora step-by-step process dekhiye ki SMS kaise bhejna hai aur har ghante ke pehle 10 minute ka secret hack kya hai!\n\nStep One: Promo Pack Pehchaan! Packet par likha hona chahiye: HAR GHANTE JEETO CASH PRIZE!\n\nStep Two: Inner Wrapper Code! Packet ke inner flap par 8-digit code print hota hai.\n\nStep Three: SMS Gateway! Number 87 22 48 72 24 par SMS type karke bhejein: GOODDAY space apna code.\n\nStep Four: Golden Minute Hack! Har naye ghante ke theek pehle 5 minute par SMS bhejein jab hourly slot fresh reset hota hai!\n\nInstant loot alerts ke liye hamara Telegram channel TrendiLoots join karein aur Trendi Loots YouTube channel ko subscribe karke Bell icon zaroor press karein!",
     "short1_script": "Good Day biscuit khaa kar wrapper mat phenko! Iske andar chhupa hai secret code jisse har ghante \u20b95,000 cash mil raha hai! Niche Related Video par tap karo aur Telegram TrendiLoots join karo!",
-    "short2_script": "Britannia Good Day hourly cash loot live hai! Har ghante \u20b95,000 jeetne ka mauka. SMS bhejo 8722487224 par GOODDAY space code. Telegram TrendiLoots join karo aur channel subscribe karo!"
+    "short2_script": "Britannia Good Day hourly cash loot live hai! Har ghante \u20b95,000 jeetne ka mauka. SMS bhejo 8722487224 par GOODDAY space code. Telegram TrendiLoots join karo aur channel subscribe karo!",
+    "completed_date": null,
+    "scheduled_date": "2026-11-21",
+    "scenes": [
+      {
+        "scene_num": 1,
+        "badge": "HOURLY \u20b95,000 CASH LOOT",
+        "title": "The \u20b910 Good Day Cash Secret",
+        "subtitle": "Win Hourly UPI Cash Directly to Your Bank",
+        "theme_color": "#EF4444",
+        "price_original": "\u20b95,000 Hourly",
+        "price_discounted": "\u20b910 (Good Day Pack)",
+        "bullets": [
+          [
+            "Britannia Har Ghante Khushiyan",
+            "Every 60 minutes one winner gets \u20b95,000"
+          ],
+          [
+            "Instant Bank Transfer",
+            "Direct UPI payment to winning mobile number"
+          ],
+          [
+            "Wrapper Code Inside",
+            "10-digit unique voucher on inner packaging"
+          ]
+        ],
+        "broll_keywords": "cookies butter biscuit tea snack upi payment mobile"
+      },
+      {
+        "scene_num": 2,
+        "badge": "STEP 1: PACK CHECK",
+        "title": "Identify the Promo Pack",
+        "subtitle": "Look for Har Ghante Khushiyan Banner",
+        "theme_color": "#F59E0B",
+        "price_original": null,
+        "price_discounted": "\u20b910, \u20b920 & \u20b930 Packs",
+        "bullets": [
+          [
+            "Bright Red Offer Ribbon",
+            "Ensure pack has the official contest branding"
+          ],
+          [
+            "Check Fresh 2026 Batch",
+            "Older non-promotional packs do not have codes"
+          ],
+          [
+            "Butter, Cashew & Chocochip",
+            "Offer valid across all Good Day variants"
+          ]
+        ],
+        "broll_keywords": "biscuit packet grocery shelf supermarket"
+      },
+      {
+        "scene_num": 3,
+        "badge": "STEP 2: SMS TO 8722487224",
+        "title": "Send SMS to Verified Gateway",
+        "subtitle": "Type GOODDAY Followed by Lot Code",
+        "theme_color": "#10B981",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Official Number: 8722487224",
+            "Britannia India automated contest server"
+          ],
+          [
+            "SMS Format: GOODDAY <CODE>",
+            "Single space between word and code"
+          ],
+          [
+            "Save Wrapper Till Result",
+            "Physical wrapper required for winner claim"
+          ]
+        ],
+        "broll_keywords": "phone screen typing sms message sent"
+      },
+      {
+        "scene_num": 4,
+        "badge": "STEP 3: HOURLY TIMING TRICK",
+        "title": "The :55 Minute Algorithm Trick",
+        "subtitle": "Send Right Before the New Hour Starts",
+        "theme_color": "#3B82F6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Send at XX:58 Minutes",
+            "Positions your entry at top of next hourly batch"
+          ],
+          [
+            "Early Morning Slots (9 AM - 11 AM)",
+            "Least competition compared to evening hours"
+          ],
+          [
+            "Multiple Entries Allowed",
+            "Send codes from different packs to multiply odds"
+          ]
+        ],
+        "broll_keywords": "digital clock timer countdown hour glass"
+      },
+      {
+        "scene_num": 5,
+        "badge": "STEP 4: TELEGRAM LOOT CHANNEL",
+        "title": "Never Miss Any Brand Loot",
+        "subtitle": "Join @TrendiLoots for Daily Free Codes",
+        "theme_color": "#8B5CF6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Daily Unused Code Drops",
+            "Free lot codes shared every morning on Telegram"
+          ],
+          [
+            "Glitch & Flash Loot Alerts",
+            "90% off food and grocery grocery deals"
+          ],
+          [
+            "Subscribe on YouTube",
+            "Tap Bell icon so tomorrow's loot is never missed"
+          ]
+        ],
+        "broll_keywords": "telegram app logo community notifications"
+      }
+    ]
   },
   {
     "day": 6,
@@ -455,7 +709,131 @@
     "short2_title": "Oreo Daily Apple iPad Loot Alert! \u26a1 Live Contest Proof #shorts",
     "long_script": "Oreo biscuit khareed kar kya aap brand new Apple iPad jeet sakte hain? Ji haan! Cadbury Oreo ne apna sabse shandaar contest shuru kar diya hai jahan daily winners ko Apple iPad aur stadium match passes mil rahe hain! \n\nAage badhne se pehle, turant hamare official Telegram channel TrendiLoots ko join kar lijiye jahan fresh codes sabse pehle post hote hain! Sath hi hamare YouTube channel Trendi Loots ko abhi subscribe karke Bell icon zaroor press kar lo!\n\n90 percent logon ko nahi pata ki packet ke peeche chhape lot code se SMS bhej kar aap bhi jeet sakte hain! Aayiye seekhte hain poora step-by-step process aur winning slot timing trick!\n\nStep One: Promotional Pack Check! Front par 'Win iPad Daily' ka blue banner hona chahiye.\n\nStep Two: Secret Lot Code! Back panel par barcode ke paas 10-digit lot number dhoondhein.\n\nStep Three: Official SMS Gateway! Recipient number 99 02 39 12 00 par type karein: OREO space 10-digit code aur send karein.\n\nStep Four: Timing Secret! Subah 9:05 AM se 9:30 AM ke beech SMS bhej kar apne jeetne ke chances 10x karein!\n\nAise hi daily FMCG brand loots ke liye Telegram channel TrendiLoots abhi join karein aur Trendi Loots YouTube channel ko subscribe karke Bell icon zaroor dabayein!",
     "short1_script": "Oreo biscuit khaa kar wrapper mat phenko! Iske peeche chhupa hai secret code jisse aap jeet sakte ho Free Apple iPad! Niche Related Video tap karo aur Telegram TrendiLoots join karo!",
-    "short2_script": "Cadbury Oreo Daily Apple iPad loot alert live hai! SMS number 9902391200 par OREO space code bhejo. Telegram TrendiLoots join karo aur Trendi Loots channel ko subscribe karo!"
+    "short2_script": "Cadbury Oreo Daily Apple iPad loot alert live hai! SMS number 9902391200 par OREO space code bhejo. Telegram TrendiLoots join karo aur Trendi Loots channel ko subscribe karo!",
+    "completed_date": null,
+    "scheduled_date": "2026-11-22",
+    "scenes": [
+      {
+        "scene_num": 1,
+        "badge": "FREE APPLE iPAD DAILY",
+        "title": "The \u20b910 Oreo iPad Mystery",
+        "subtitle": "Why Millions of Biscuit Wrappers Hold Winning Codes",
+        "theme_color": "#EF4444",
+        "price_original": "\u20b939,900 (Apple iPad)",
+        "price_discounted": "\u20b910 (Oreo Pack)",
+        "bullets": [
+          [
+            "Official Cadbury Oreo Contest",
+            "Daily Apple iPad 10th Gen to lucky winners"
+          ],
+          [
+            "Inside 10-Digit Alphanumeric Code",
+            "Laser-printed on inner silver foil"
+          ],
+          [
+            "Zero Delivery or Processing Charges",
+            "Direct courier dispatch from Cadbury India"
+          ]
+        ],
+        "broll_keywords": "oreo cookies milk splash apple ipad tablet retail store"
+      },
+      {
+        "scene_num": 2,
+        "badge": "STEP 1: PROMO PACK IDENTIFICATION",
+        "title": "Identify the Genuine Contest Pack",
+        "subtitle": "Do Not Buy Old Non-Contest Stock",
+        "theme_color": "#F59E0B",
+        "price_original": null,
+        "price_discounted": "\u20b910, \u20b930 & \u20b950 Packs",
+        "bullets": [
+          [
+            "Look for Blue iPad Banner",
+            "Must display Play & Win Apple iPad on front"
+          ],
+          [
+            "Check 2026 Batch",
+            "Older packs lying on shop shelves do not have codes"
+          ],
+          [
+            "Valid Across All Flavors",
+            "Vanilla, Chocolate & Strawberry variants eligible"
+          ]
+        ],
+        "broll_keywords": "supermarket snacks biscuits cart shopping"
+      },
+      {
+        "scene_num": 3,
+        "badge": "STEP 2: CODE HUNTING",
+        "title": "Locate the 10-Digit Lot Code",
+        "subtitle": "Gently Open from the Center Seam",
+        "theme_color": "#10B981",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Do Not Tear Through Code",
+            "Peel the back seam apart gently"
+          ],
+          [
+            "Look for 10 Characters",
+            "e.g., OR 92 K4 88 PQ in laser ink"
+          ],
+          [
+            "Keep Flashlight Handy",
+            "Silver foil reflections can make characters faint"
+          ]
+        ],
+        "broll_keywords": "hands opening wrapper silver foil code"
+      },
+      {
+        "scene_num": 4,
+        "badge": "STEP 3: SMS GATEWAY",
+        "title": "SMS to Official Number: 9902391200",
+        "subtitle": "Format: OREO <10-Digit Code>",
+        "theme_color": "#3B82F6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Send to 9902391200",
+            "Automated contest server active 9 AM - 9 PM"
+          ],
+          [
+            "Caps Lock ON: OREO <CODE>",
+            "No extra punctuation or symbols"
+          ],
+          [
+            "Keep SMS Confirmation Safe",
+            "Keep reference ID for winner verification"
+          ]
+        ],
+        "broll_keywords": "phone screen sms conversation sent"
+      },
+      {
+        "scene_num": 5,
+        "badge": "STEP 4: WINNING ALGORITHM TIMING",
+        "title": "The Low-Traffic Morning Loophole",
+        "subtitle": "Why 9:10 AM Gives 10x Winning Advantage",
+        "theme_color": "#8B5CF6",
+        "price_original": null,
+        "price_discounted": null,
+        "bullets": [
+          [
+            "Subah 9:05 AM se 9:30 AM",
+            "Server entry queue is almost empty"
+          ],
+          [
+            "Evening 8:30 PM Window",
+            "Second best low-competition slot"
+          ],
+          [
+            "Join @TrendiLoots on Telegram",
+            "Fresh lot codes & glitch deals shared daily"
+          ]
+        ],
+        "broll_keywords": "alarm clock digital watch congratulations screen"
+      }
+    ]
   },
   {
     "day": 7,
@@ -647,7 +1025,9 @@
         ],
         "broll_keywords": "telegram app screen smartphone notifications subscribe button"
       }
-    ]
+    ],
+    "completed_date": null,
+    "scheduled_date": "2026-11-23"
   },
   {
     "day": 8,
@@ -839,6 +1219,8 @@
         ],
         "broll_keywords": "telegram app screen smartphone notifications subscribe button"
       }
-    ]
+    ],
+    "completed_date": null,
+    "scheduled_date": "2026-11-24"
   }
 ]

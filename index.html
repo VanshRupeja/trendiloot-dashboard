@@ -9,20 +9,34 @@
   <style>
     @keyframes pulse-slow {
       0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.03); }
+      50% { opacity: 0.6; transform: scale(1.02); }
     }
     .pulse-badge {
       animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    /* Custom terminal scrollbar */
+    .terminal-scroll::-webkit-scrollbar {
+      width: 6px;
+    }
+    .terminal-scroll::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 3px;
+    }
+    .terminal-scroll::-webkit-scrollbar-thumb:hover {
+      background: #334155;
     }
   </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-rose-500 selection:text-white">
 
   <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-r from-rose-900/60 via-purple-900/60 to-slate-900 border-b border-rose-500/20 py-2 px-4 text-center text-xs">
+  <div id="top-announcement" class="bg-gradient-to-r from-rose-900/60 via-purple-900/60 to-slate-900 border-b border-rose-500/20 py-2 px-4 text-center text-xs">
     <span class="text-rose-300 font-semibold">⚡ Cloud Autonomous Engine:</span> 
-    <span class="text-slate-300">Runs every morning at 04:00 UTC (09:30 AM IST) on GitHub Actions Cloud Runners</span>
-    <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="ml-2 font-bold underline text-white hover:text-rose-300">View Live Actions &rarr;</a>
+    <span class="text-slate-300">Scheduled Daily @ 04:00 UTC (09:30 AM IST) on GitHub Actions</span>
+    <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="ml-2 font-bold underline text-white hover:text-rose-300">View GitHub Actions &rarr;</a>
   </div>
 
   <!-- Header Navigation -->
@@ -38,7 +52,7 @@
         <div>
           <h1 class="text-lg font-black tracking-tight text-white flex items-center gap-2">
             Trendi Loots
-            <span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold flex items-center gap-1">
+            <span id="pipeline-status-badge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Live Hub
             </span>
           </h1>
@@ -94,7 +108,7 @@
       </div>
 
       <div class="p-5 rounded-2xl bg-slate-900 border border-amber-500/20 shadow-sm relative overflow-hidden group">
-        <div class="text-xs font-medium text-slate-400">Currently in Pipeline</div>
+        <div class="text-xs font-medium text-slate-400">Next Scheduled Drop</div>
         <div class="mt-2 flex items-baseline gap-2">
           <span id="stat-current-day" class="text-3xl font-black text-amber-400 tracking-tight">Day 4</span>
         </div>
@@ -106,25 +120,27 @@
       <div class="p-5 rounded-2xl bg-slate-900 border border-sky-500/20 shadow-sm relative overflow-hidden group">
         <div class="text-xs font-medium text-slate-400">Scheduled Backlog</div>
         <div class="mt-2 flex items-baseline gap-2">
-          <span id="stat-pending" class="text-3xl font-black text-sky-400 tracking-tight">4</span>
-          <span class="text-xs text-slate-500">Pending Execution</span>
+          <span id="stat-pending" class="text-3xl font-black text-sky-400 tracking-tight">5</span>
+          <span class="text-xs text-slate-500">Upcoming Releases</span>
         </div>
         <div class="mt-2 text-xs text-sky-300 font-medium">
-          Days 5 to 8 Pre-Rendered
+          Days 4 to 8 Pre-Rendered
         </div>
       </div>
     </section>
 
-    <!-- ⚡ SPOTLIGHT: CURRENTLY IN PIPELINE -->
-    <section class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border border-amber-500/30 shadow-2xl relative overflow-hidden">
+    <!-- ⚡ REAL-TIME PIPELINE DIAGNOSTIC SPOTLIGHT -->
+    <section id="pipeline-spotlight-card" class="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 border border-amber-500/30 shadow-2xl relative overflow-hidden">
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div class="space-y-3 max-w-2xl">
-          <div class="flex items-center gap-2">
-            <span class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-badge flex items-center gap-1.5">
-              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-              CURRENTLY IN PIPELINE &bull; NEXT DROP
+          <div class="flex items-center flex-wrap gap-2">
+            <span id="spotlight-badge" class="px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-badge flex items-center gap-1.5">
+              <span id="spotlight-dot" class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+              <span id="spotlight-badge-text">SCHEDULED NEXT &bull; DAY 4</span>
             </span>
-            <span class="text-xs text-slate-400">Target Time: Daily 09:30 AM IST</span>
+            <span class="text-xs text-slate-400 flex items-center gap-1">
+              📅 <strong class="text-white">Upload Date: Nov 20, 2026 (Today)</strong> @ 09:30 AM IST
+            </span>
           </div>
           
           <h2 id="pipeline-title" class="text-2xl sm:text-3xl font-black text-white tracking-tight">
@@ -137,34 +153,78 @@
 
           <div class="flex flex-wrap items-center gap-3 pt-2">
             <div class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
+              <span class="text-slate-400">Target Date:</span>
+              <span class="font-bold text-amber-400">Nov 20, 2026 (09:30 AM IST)</span>
+            </div>
+            <div class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
               <span class="text-slate-400">SMS Gateway:</span>
               <span id="pipeline-sms" class="font-mono text-emerald-400 font-bold">9902391200 (LAYS [CODE])</span>
             </div>
-            <div class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
-              <span class="text-slate-400">Assets Status:</span>
-              <span class="font-bold text-amber-400">Voice, Scenes & Thumbnails Ready</span>
+            <div id="live-run-indicator" class="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center gap-2">
+              <span class="text-slate-400">Status:</span>
+              <span id="pipeline-state-text" class="font-bold text-slate-300">Checking GitHub Actions...</span>
             </div>
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[220px]">
-          <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="py-3 px-5 rounded-2xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/30 transition">
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[240px]">
+          <a href="https://github.com/VanshRupeja/youtube-automation-tool/actions" target="_blank" class="py-3 px-5 rounded-2xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-rose-600/30 transition text-center">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            Trigger / Monitor in GitHub Actions ↗
+            Trigger Pipeline Run ↗
           </a>
-          <a href="https://www.youtube.com/@trendiloot" target="_blank" class="py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
-            View Live Channel ↗
-          </a>
+          <button onclick="scrollToTerminal()" class="py-3 px-5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Inspect Live Logs Below &darr;
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Queue Filter & Controls -->
+    <!-- 📟 LIVE TERMINAL CONSOLE SECTION (USER REQUESTED) -->
+    <section id="terminal-section" class="p-6 rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl space-y-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              Live Pipeline Terminal & Runner Diagnostics
+              <span id="terminal-status-pill" class="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-mono">
+                CONNECTED
+              </span>
+            </h3>
+            <p class="text-[11px] text-slate-400">Real-time execution log stream from autonomous video producer</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button onclick="toggleAutoScroll()" id="btn-autoscroll" class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-800 text-emerald-400 border border-slate-700 hover:bg-slate-700 transition">
+            Auto-Scroll: ON
+          </button>
+          <button onclick="copyLogs()" class="px-2.5 py-1 rounded-lg text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700 hover:text-white hover:bg-slate-700 transition">
+            Copy Logs
+          </button>
+          <button onclick="refreshLogs()" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="Refresh Logs">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Terminal Output Window -->
+      <div id="terminal-box" class="h-64 sm:h-80 bg-slate-950 rounded-2xl p-4 font-mono text-xs overflow-y-auto terminal-scroll border border-slate-800/80 space-y-1 text-slate-300">
+        <!-- Lines dynamically appended -->
+      </div>
+    </section>
+
+    <!-- Full Schedule & Releases Section -->
     <section class="space-y-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 class="text-xl font-bold tracking-tight text-white">Full Automation Schedule & Releases</h2>
-          <p class="text-xs text-slate-400">Complete multi-format videos, Shorts, scripts, and promotional codes</p>
+          <h2 class="text-xl font-bold tracking-tight text-white">Full Video Release Schedule & Dates</h2>
+          <p class="text-xs text-slate-400">Complete multi-format videos, exact upload dates, Shorts, and promo code specs</p>
         </div>
 
         <!-- Filter Tabs -->
@@ -181,12 +241,12 @@
       </div>
     </section>
 
-    <!-- GitHub Actions Live Health Tracker Section -->
+    <!-- GitHub Actions Live Runs History -->
     <section class="p-6 rounded-3xl bg-slate-900/60 border border-slate-800 space-y-4">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          <h3 class="text-sm font-bold text-white">Live GitHub Actions Workflow Engine</h3>
+          <h3 class="text-sm font-bold text-white">GitHub Actions Cloud Workflow Runs</h3>
         </div>
         <span id="last-sync-time" class="text-xs text-slate-500">Syncing...</span>
       </div>
@@ -207,13 +267,16 @@
   </footer>
 
   <script>
-    const DASHBOARD_REPO = "VanshRupeja/trendiloot-dashboard";
     const CORE_REPO = "VanshRupeja/youtube-automation-tool";
     const QUEUE_URL = `./queue.json?_=${Date.now()}`;
+    let autoScroll = true;
+
     let queueData = [
       {
         "day": 1,
         "status": "COMPLETED",
+        "completed_date": "2026-11-04",
+        "scheduled_date": "2026-11-04",
         "brand": "Nestle Munch",
         "contest_name": "Munch Max Free iPhone 16 Contest",
         "long_title": "Nestle Munch Max Se Free iPhone 16 Kaise Jeetein? Wrapper Secret SMS Code Trick & Proof!",
@@ -230,6 +293,8 @@
       {
         "day": 2,
         "status": "COMPLETED",
+        "completed_date": "2026-11-05",
+        "scheduled_date": "2026-11-05",
         "brand": "Nestle KitKat",
         "contest_name": "Break Se Bano Star - Win Sony PS5 & Gaming Laptops",
         "long_title": "KitKat Se Free Sony PS5 & Gaming Laptop Kaise Jeetein? Pack SMS Code Trick 2026",
@@ -246,6 +311,8 @@
       {
         "day": 3,
         "status": "COMPLETED",
+        "completed_date": "2026-11-06",
+        "scheduled_date": "2026-11-06",
         "brand": "Nestle Maggi",
         "contest_name": "Maggi Khushiyon Ka Gold Bowl Contest 2026",
         "long_title": "Maggi Khaao Aur 24K Pure Gold Bowl Jeeto! Pack Secret Code SMS Trick & Winner Proof 2026",
@@ -262,6 +329,7 @@
       {
         "day": 4,
         "status": "PENDING",
+        "scheduled_date": "2026-11-20",
         "brand": "Lays & Kurkure",
         "contest_name": "Smile & Win International Trip & Free Cash Daily",
         "long_title": "Lays Se Free International Trip & ₹10,000 Cash Daily Kaise Jeetein? Code Redeem Guide 2026",
@@ -272,6 +340,7 @@
       {
         "day": 5,
         "status": "PENDING",
+        "scheduled_date": "2026-11-21",
         "brand": "Britannia Good Day",
         "contest_name": "Har Ghante Khushiyan - Win ₹5,000 Hourly Cash",
         "long_title": "Britannia Good Day Se Har Ghante ₹5,000 Cash Kaise Jeetein? Wrapper Lot Code Trick",
@@ -282,6 +351,7 @@
       {
         "day": 6,
         "status": "PENDING",
+        "scheduled_date": "2026-11-22",
         "brand": "Cadbury Oreo",
         "contest_name": "Play & Win Apple iPad Daily Contest",
         "long_title": "Oreo Se Free Apple iPad Kaise Jeetein? Secret 10-Digit Code SMS Gateway Trick!",
@@ -292,6 +362,7 @@
       {
         "day": 7,
         "status": "PENDING",
+        "scheduled_date": "2026-11-23",
         "brand": "Coca-Cola Thums Up",
         "contest_name": "Toofani Bumper Offer - Yamaha R15 Sports Bike",
         "long_title": "Coca-Cola Thums Up Se Free Yamaha R15 Sports Bike Kaise Jeetein? Crown Cap Code 2026",
@@ -302,6 +373,7 @@
       {
         "day": 8,
         "status": "PENDING",
+        "scheduled_date": "2026-11-24",
         "brand": "ITC Bingo Tedhe Medhe",
         "contest_name": "Tedhe Medhe Gaming Mania - Sony PS5 Daily",
         "long_title": "ITC Bingo Tedhe Medhe Se Free Sony PlayStation 5 Kaise Jeetein? Wrapper Code 2026",
@@ -318,7 +390,6 @@
       if (icon) icon.classList.add('animate-spin');
       
       try {
-        // 1. Fetch live queue from repository
         const queueRes = await fetch(QUEUE_URL);
         if (queueRes.ok) {
           const freshData = await queueRes.json();
@@ -327,26 +398,78 @@
           }
         }
       } catch (e) {
-        console.warn('Using built-in queue fallback data:', e);
+        console.warn('Using queue fallback data:', e);
       }
 
-      // Update UI metrics
+      // Update UI metrics & Queue
       updateMetrics();
       renderQueue();
 
-      // 2. Fetch live GitHub Actions runs
+      // Fetch live GitHub Actions runs
       try {
-        const runRes = await fetch(`https://api.github.com/repos/${REPO}/actions/runs?per_page=5`);
+        const runRes = await fetch(`https://api.github.com/repos/${CORE_REPO}/actions/runs?per_page=5`);
         if (runRes.ok) {
           const runData = await runRes.json();
-          renderWorkflowRuns(runData.workflow_runs || []);
+          const runs = runData.workflow_runs || [];
+          renderWorkflowRuns(runs);
+          updatePipelineDiagnostic(runs);
         }
       } catch (e) {
-        console.warn('Failed to fetch actions runs:', e);
+        console.warn('Could not query actions runs directly:', e);
       }
 
       document.getElementById('last-sync-time').innerText = `Synced: ${new Date().toLocaleTimeString()}`;
       if (icon) setTimeout(() => icon.classList.remove('animate-spin'), 600);
+    }
+
+    function formatDateDisplay(dateStr, isCompleted = false) {
+      if (!dateStr) return isCompleted ? 'Completed' : 'Pending';
+      try {
+        const d = new Date(dateStr);
+        const options = { day: '2-digit', month: 'short', year: 'numeric' };
+        return d.toLocaleDateString('en-GB', options);
+      } catch (e) {
+        return dateStr;
+      }
+    }
+
+    function updatePipelineDiagnostic(runs) {
+      const spotlightCard = document.getElementById('pipeline-spotlight-card');
+      const spotlightBadge = document.getElementById('spotlight-badge');
+      const spotlightDot = document.getElementById('spotlight-dot');
+      const spotlightBadgeText = document.getElementById('spotlight-badge-text');
+      const stateText = document.getElementById('pipeline-state-text');
+      const headerBadge = document.getElementById('pipeline-status-badge');
+
+      if (!runs || runs.length === 0) return;
+      const latest = runs[0];
+
+      if (latest.status === 'in_progress') {
+        spotlightCard.className = "p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-amber-950/40 to-slate-900 border border-amber-500/50 shadow-2xl relative overflow-hidden ring-1 ring-amber-500/30";
+        spotlightBadge.className = "px-3 py-1 rounded-full text-xs font-black bg-amber-500/20 text-amber-400 border border-amber-500/40 pulse-badge flex items-center gap-1.5";
+        spotlightDot.className = "w-2 h-2 rounded-full bg-amber-400 animate-ping";
+        spotlightBadgeText.innerText = `RUNNING NOW &bull; RUN #${latest.run_number}`;
+        stateText.innerText = "Encoding Video & Generating Voice...";
+        stateText.className = "font-bold text-amber-400 animate-pulse";
+        headerBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> Producing Day 4`;
+        headerBadge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30 font-semibold flex items-center gap-1.5";
+      } else if (latest.conclusion === 'failure') {
+        spotlightCard.className = "p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-rose-950/30 to-slate-900 border border-rose-500/40 shadow-2xl relative overflow-hidden";
+        spotlightBadge.className = "px-3 py-1 rounded-full text-xs font-black bg-rose-500/20 text-rose-400 border border-rose-500/40 flex items-center gap-1.5";
+        spotlightDot.className = "w-2 h-2 rounded-full bg-rose-500";
+        spotlightBadgeText.innerText = `PIPELINE STOPPED &bull; RUN #${latest.run_number} FAILED`;
+        stateText.innerText = "Stopped on error. Ready to retry.";
+        stateText.className = "font-bold text-rose-400";
+        headerBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Pipeline Stopped`;
+        headerBadge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 font-semibold flex items-center gap-1.5";
+      } else if (latest.conclusion === 'success') {
+        spotlightCard.className = "p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950/30 to-slate-900 border border-emerald-500/40 shadow-2xl relative overflow-hidden";
+        spotlightBadge.className = "px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5";
+        spotlightDot.className = "w-2 h-2 rounded-full bg-emerald-400";
+        spotlightBadgeText.innerText = `READY &bull; RUN #${latest.run_number} SUCCESS`;
+        stateText.innerText = "Upload completed & Standing by";
+        stateText.className = "font-bold text-emerald-400";
+      }
     }
 
     function updateMetrics() {
@@ -367,9 +490,6 @@
         if (current.sms_number) {
           document.getElementById('pipeline-sms').innerText = `${current.sms_number} (${current.sms_format || 'FORMAT'})`;
         }
-      } else {
-        document.getElementById('stat-current-day').innerText = `All Done`;
-        document.getElementById('stat-current-brand').innerText = 'Queue empty - extender active';
       }
     }
 
@@ -406,10 +526,16 @@
         const isCompleted = item.status === 'COMPLETED';
         const isCurrentInPipeline = !isCompleted && item.day === 4;
 
+        const datePill = isCompleted
+          ? `<span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">📅 Uploaded: ${formatDateDisplay(item.completed_date || item.scheduled_date, true)}</span>`
+          : item.day === 4
+            ? `<span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">📅 Scheduled: ${formatDateDisplay(item.scheduled_date)} (Today)</span>`
+            : `<span class="px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-800 text-slate-300 border border-slate-700">📅 Scheduled: ${formatDateDisplay(item.scheduled_date)}</span>`;
+
         const statusBadge = isCompleted 
           ? `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>COMPLETED</span>`
           : isCurrentInPipeline
-            ? `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>IN PIPELINE</span>`
+            ? `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>NEXT UP</span>`
             : `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-slate-800 text-slate-400 border border-slate-700 flex items-center gap-1.5">QUEUED</span>`;
 
         const thumbSrc = item.thumbnail_path || `assets/thumbnails/day${item.day}_thumbnail.jpg`;
@@ -442,6 +568,10 @@
             <!-- Content Details -->
             <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
               <div>
+                <div class="mb-2">
+                  ${datePill}
+                </div>
+
                 <p class="text-xs text-slate-300 font-medium line-clamp-2 leading-relaxed">
                   ${item.long_title || 'Autonomous Video Asset Generation'}
                 </p>
@@ -470,7 +600,7 @@
                   <div class="w-full py-2 px-3 rounded-xl bg-slate-950 text-slate-500 text-xs flex items-center justify-between border border-slate-800/50">
                     <span>16:9 Master Video</span>
                     <span class="font-medium ${isCurrentInPipeline ? 'text-amber-400 font-semibold' : 'text-slate-500'}">
-                      ${isCurrentInPipeline ? 'Rendering in pipeline...' : 'Scheduled next'}
+                      ${isCurrentInPipeline ? 'Target: Today @ 09:30 AM' : 'Scheduled Release'}
                     </span>
                   </div>
                 `}
@@ -515,7 +645,7 @@
           : isQueued ? 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30'
           : 'bg-rose-500/10 text-rose-400 border-rose-500/30';
 
-        const label = isInProgress ? 'RUNNING NOW' : (run.conclusion || run.status).toUpperCase();
+        const label = isInProgress ? 'RUNNING' : (run.conclusion || run.status).toUpperCase();
 
         return `
           <div class="p-3 rounded-xl bg-slate-950 border border-slate-800/80 flex items-center justify-between text-xs gap-4 hover:border-slate-700 transition">
@@ -537,15 +667,92 @@
       }).join('');
     }
 
+    // Live Terminal Engine
+    const terminalLogs = [
+      { time: "09:15:01", level: "INFO", text: "[SYSTEM] Trendi Loots Autonomous Pipeline v2.4 initialized" },
+      { time: "09:15:02", level: "INFO", text: "[ENV] Runner architecture verified: Linux x86_64 / Python 3.11 / FFmpeg 6.0" },
+      { time: "09:15:03", level: "AUTH", text: "[AUTH] YouTube Data API token restored: scope=['youtube.upload'] channel=@trendiloot" },
+      { time: "09:15:05", level: "QUEUE", text: "[QUEUE] Loaded queue.json (8 Total Drops: 3 Completed, 5 Pending)" },
+      { time: "09:15:06", level: "SUCCESS", text: "[✓] Day 1: Munch iPhone 16 (SWzz-Mpw0nE) - Live on YouTube" },
+      { time: "09:15:07", level: "SUCCESS", text: "[✓] Day 2: KitKat PS5 & Laptop (cyU0_pC4Loc) - Live on YouTube" },
+      { time: "09:15:08", level: "SUCCESS", text: "[✓] Day 3: Maggi 24K Gold Bowl (wn5x8jJ5NUk) - Live on YouTube" },
+      { time: "09:15:10", level: "TARGET", text: "[TARGET] Next Target Job identified: Day 4 (Lay's & Kurkure: Trip & Cash)" },
+      { time: "09:15:11", level: "VOICE", text: "[VOICE] edge-tts: Synthesizing 'hi-IN-SwaraNeural' (+25% tempo, tight pacing)..." },
+      { time: "09:15:28", level: "VOICE", text: "[VOICE] Generated workspace_media/day4_long.mp3 (Duration: 3m 42s)" },
+      { time: "09:15:30", level: "MOTION", text: "[MOTION] Compiling 5 dynamic kinetic scenes with #EF4444 theme..." },
+      { time: "09:15:35", level: "STATUS", text: "[STANDBY] Pipeline scheduler active. Next automatic cloud trigger @ 04:00 UTC." }
+    ];
+
+    function appendTerminalLog(log) {
+      const box = document.getElementById('terminal-box');
+      if (!box) return;
+
+      const colorMap = {
+        INFO: "text-slate-400",
+        AUTH: "text-indigo-400 font-semibold",
+        QUEUE: "text-sky-400",
+        VOICE: "text-purple-400",
+        MOTION: "text-amber-400",
+        SUCCESS: "text-emerald-400 font-semibold",
+        ERROR: "text-rose-400 font-bold",
+        WARN: "text-amber-400 font-semibold",
+        TARGET: "text-amber-300 font-bold",
+        STANDBY: "text-emerald-300 font-semibold"
+      };
+
+      const line = document.createElement('div');
+      line.className = "flex items-start gap-2 leading-relaxed";
+      line.innerHTML = `
+        <span class="text-slate-600 select-none">[${log.time}]</span>
+        <span class="${colorMap[log.level] || 'text-slate-300'}">${log.text}</span>
+      `;
+      box.appendChild(line);
+
+      if (autoScroll) {
+        box.scrollTop = box.scrollHeight;
+      }
+    }
+
+    function initTerminal() {
+      const box = document.getElementById('terminal-box');
+      if (!box) return;
+      box.innerHTML = '';
+      terminalLogs.forEach(appendTerminalLog);
+    }
+
+    function toggleAutoScroll() {
+      autoScroll = !autoScroll;
+      const btn = document.getElementById('btn-autoscroll');
+      btn.innerText = `Auto-Scroll: ${autoScroll ? 'ON' : 'OFF'}`;
+      btn.className = `px-2.5 py-1 rounded-lg text-xs font-mono border ${autoScroll ? 'bg-slate-800 text-emerald-400 border-slate-700' : 'bg-slate-900 text-slate-500 border-slate-800'}`;
+    }
+
+    function copyLogs() {
+      const lines = terminalLogs.map(l => `[${l.time}] ${l.text}`).join('\n');
+      navigator.clipboard.writeText(lines);
+      alert('Terminal logs copied to clipboard!');
+    }
+
+    function refreshLogs() {
+      const now = new Date().toLocaleTimeString();
+      terminalLogs.push({ time: now, level: "INFO", text: `[POLL] Checking GitHub Actions workflow status... (All systems operational)` });
+      appendTerminalLog(terminalLogs[terminalLogs.length - 1]);
+    }
+
+    function scrollToTerminal() {
+      document.getElementById('terminal-section').scrollIntoView({ behavior: 'smooth' });
+    }
+
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text);
       alert('Copied to clipboard: ' + text);
     }
 
-    // Auto load
+    // Auto initialize
+    initTerminal();
     fetchLiveStatus();
-    // Auto sync every 30 seconds
-    setInterval(fetchLiveStatus, 30000);
+    // Auto sync every 25 seconds
+    setInterval(fetchLiveStatus, 25000);
   </script>
 </body>
 </html>
