@@ -207,8 +207,9 @@
   </footer>
 
   <script>
-    const REPO = "VanshRupeja/youtube-automation-tool";
-    const RAW_QUEUE_URL = `https://raw.githubusercontent.com/${REPO}/main/queue.json`;
+    const DASHBOARD_REPO = "VanshRupeja/trendiloot-dashboard";
+    const CORE_REPO = "VanshRupeja/youtube-automation-tool";
+    const QUEUE_URL = `./queue.json?_=${Date.now()}`;
     let queueData = [
       {
         "day": 1,
@@ -317,8 +318,8 @@
       if (icon) icon.classList.add('animate-spin');
       
       try {
-        // 1. Fetch raw queue from GitHub with cache-busting
-        const queueRes = await fetch(`${RAW_QUEUE_URL}?_=${Date.now()}`);
+        // 1. Fetch live queue from repository
+        const queueRes = await fetch(QUEUE_URL);
         if (queueRes.ok) {
           const freshData = await queueRes.json();
           if (Array.isArray(freshData) && freshData.length > 0) {
