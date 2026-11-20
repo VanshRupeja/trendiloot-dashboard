@@ -462,6 +462,15 @@
         stateText.className = "font-bold text-rose-400";
         headerBadge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Pipeline Stopped`;
         headerBadge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 font-semibold flex items-center gap-1.5";
+        
+        if (!window.hasLoggedFailure) {
+          window.hasLoggedFailure = true;
+          appendTerminalLog({
+            time: new Date(latest.created_at).toLocaleTimeString(),
+            level: "ERROR",
+            text: `[ALERT] GitHub Actions Run #${latest.run_number} reported failure during step 'Commit & Push Updated Queue'. Secret write permissions now granted.`
+          });
+        }
       } else if (latest.conclusion === 'success') {
         spotlightCard.className = "p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-emerald-950/30 to-slate-900 border border-emerald-500/40 shadow-2xl relative overflow-hidden";
         spotlightBadge.className = "px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center gap-1.5";
