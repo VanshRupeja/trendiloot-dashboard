@@ -269,9 +269,11 @@
   <script>
     const CORE_REPO = "VanshRupeja/youtube-automation-tool";
     const QUEUE_URL = `./queue.json?_=${Date.now()}`;
+    const HISTORY_URL = `./completed_history.json?_=${Date.now()}`;
     let autoScroll = true;
 
-    let queueData = [
+    // Completed Archive (Days already live on YouTube)
+    let completedHistory = [
       {
         "day": 1,
         "status": "COMPLETED",
@@ -325,7 +327,11 @@
         "thumbnail_path": "assets/thumbnails/day3_thumbnail.jpg",
         "sms_number": "6262642222",
         "sms_format": "MAGGI [LOT CODE]"
-      },
+      }
+    ];
+
+    // Active Pending Queue (Uploaded videos removed)
+    let queueData = [
       {
         "day": 4,
         "status": "PENDING",
@@ -389,17 +395,52 @@
       const icon = document.getElementById('refresh-icon');
       if (icon) icon.classList.add('animate-spin');
       
+      // 1. Fetch active queue (only pending jobs)
       try {
         const queueRes = await fetch(QUEUE_URL);
         if (queueRes.ok) {
           const freshData = await queueRes.json();
-          if (Array.isArray(freshData) && freshData.length > 0) {
+          if (Array.isArray(freshData)) {
             queueData = freshData;
           }
         }
       } catch (e) {
         console.warn('Using queue fallback data:', e);
       }
+
+      // 2. Fetch completed history (archived uploaded drops)
+      try {
+        const histRes = await fetch(HISTORY_URL);
+        if (histRes.ok) {
+          const freshHist = await histRes.json();
+          if (Array.isArray(freshHist)) {
+            completedHistory = freshHist;
+          }
+        }
+      } catch (e) {
+        console.warn('Using history fallback data:', e);
+      }
+
+      // Update UI metrics & Queue
+      updateMetrics();
+      renderQueue();
+
+      // Fetch live GitHub Actions runs
+      try {
+        const runRes = await fetch(`https://api.github.com/repos/${CORE_REPO}/actions/runs?per_page=5`);
+        if (runRes.ok) {
+          const runData = await runRes.json();
+          const runs = runData.workflow_runs || [];
+          renderWorkflowRuns(runs);
+          updatePipelineDiagnostic(runs);
+        }
+      } catch (e) {
+        console.warn('Could not query actions runs directly:', e);
+      }
+
+      document.getElementById('last-sync-time').innerText = `Synced: ${new Date().toLocaleTimeString()}`;
+      if (icon) setTimeout(() => icon.classList.remove('animate-spin'), 600);
+    }
 
       // Update UI metrics & Queue
       updateMetrics();
@@ -482,12 +523,21 @@
     }
 
     function updateMetrics() {
-      const completed = queueData.filter(i => i.status === 'COMPLETED');
+      const completed = completedHistory;
       const pending = queueData.filter(i => i.status !== 'COMPLETED');
+      const totalCount = completed.length + pending.length;
 
-      document.getElementById('stat-total').innerText = queueData.length;
+      document.getElementById('stat-total').innerText = totalCount;
       document.getElementById('stat-completed').innerText = completed.length;
       document.getElementById('stat-pending').innerText = pending.length;
+
+      // Update filter tab button badges
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        const filter = btn.getAttribute('data-filter');
+        if (filter === 'all') btn.innerText = `All Days (${totalCount})`;
+        else if (filter === 'COMPLETED') btn.innerText = `Completed (${completed.length})`;
+        else if (filter === 'PENDING') btn.innerText = `Pending Queue (${pending.length})`;
+      });
 
       if (pending.length > 0) {
         const current = pending[0];
@@ -520,11 +570,14 @@
       const container = document.getElementById('queue-container');
       if (!container) return;
 
-      const items = queueData.filter(i => {
-        if (currentFilter === 'all') return true;
-        if (currentFilter === 'COMPLETED') return i.status === 'COMPLETED';
-        return i.status !== 'COMPLETED';
-      });
+      let items = [];
+      if (currentFilter === 'all') {
+        items = [...completedHistory, ...queueData];
+      } else if (currentFilter === 'COMPLETED') {
+        items = completedHistory;
+      } else {
+        items = queueData.filter(i => i.status !== 'COMPLETED');
+      }
 
       if (items.length === 0) {
         container.innerHTML = `<div class="col-span-full py-12 text-center text-slate-500 text-sm">No items found for this filter.</div>`;
